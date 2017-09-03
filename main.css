@@ -1,0 +1,16 @@
+#socialLinksFlex {
+  width: 100%;
+}
+.social {
+  width: 75px;
+  height: 575px;
+  border: solid;
+  border-radius: 50%;
+  color: white;
+  transition:all .3s ease-in-out;
+}
+.social:hover {
+  border: solid white;
+  color: gray;
+  background-color: white;
+}
