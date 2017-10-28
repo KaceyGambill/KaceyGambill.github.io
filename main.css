@@ -1,16 +1,52 @@
-#socialLinksFlex {
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+.container {
+  width: auto;
+}
+#about-section {
+  height: 200px;
   width: 100%;
 }
-.social {
-  width: 75px;
-  height: 575px;
-  border: solid;
-  border-radius: 50%;
-  color: white;
-  transition:all .3s ease-in-out;
+#profilePic {
+  height: 120px;
+  width: 120px;
 }
-.social:hover {
-  border: solid white;
-  color: gray;
-  background-color: white;
+#about-me-text {
+  width: 70%;
+  float: left;
+}
+#portfolio-section {
+  border: solid pink;
+  width: 100%;
+}
+form {
+  margin: 0 auto;
+  width: 80%;
+  padding-left: 27%;
+}
+.form-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  width: 50%;
+}
+input {
+  border: 0;
+  background: 00;
+  width: 100%;
+}
+textarea {
+  width: 100%;
+  height: 50px;
+  resize: none!important;
+  border: 0;
+  overflow: auto;
+}
+textarea, input:focus {
+  outline: 0;
 }

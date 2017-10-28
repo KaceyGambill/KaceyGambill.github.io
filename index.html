@@ -1,27 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    Kacey's Portfolio
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kacey's Portfolio</title>
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact-me">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        <section id="about">
+            <div id="about-section">
+                <h3 style="text-align: center;">About Me</h3>
+            <div id="about-me-text" class="col">
+                <p class="lead" >I am currently in the USAF(Active Duty) and am transitioning to the Reserves.
+                Afterwards I will be finishing up my degree in Computer Science, 
+                while seeking a job / internship as a Full-Stack developer or Software Developer.</p>
+            </div>
+            <img src="http://res.cloudinary.com/dqnccmobu/image/upload/v1504076458/IMG_0667_hpzojx.jpg" class="rounded-circle float-right" id="profilePic" style="margin: 2%;">
+            </div>
+        </section> 
 
-<nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Navbar</a>
-</nav>
-    
-<footer class="navbar navbar-default navbar-fixed-bottom" style="background-color: #8b688e;">
-    <div class="d-flex justify-content-center">
-        <div class="p-2"><a href="_blank" class="social"><i class="fa fa-fw fa-github"></i></a></div>
-        <div class="p-2"><a href="_blank" class="social"><i class="fa fa-fw fa-linkedin"></i></a></div>
-        <div class="p-2"><a href="_blank" class="social"><i class="fa fa-fw fa-twitter"></i></a></div>
-    </div>
-</footer>
+        <section id="portfolio">
+            <div id="portfolio-section">
+                <div class="card-group">
+                    <div class="card">
+                        <img class="card-img-top" src=".." alt="Proj1">
+                        <div class="card-block">
+                            <h4 class="card-block">Proj1</h4>
+                            <p class="card-text">Proj1Descript</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src=".." alt="Proj1">
+                        <div class="card-block">
+                            <h4 class="card-block">Proj1</h4>
+                            <p class="card-text">Proj1Descript</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src=".." alt="Proj1">
+                        <div class="card-block">
+                            <h4 class="card-block">Proj1</h4>
+                            <p class="card-text">Proj1Descript</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section id="contact-me">
+    <footer class="footer">
+        <div class="container">
+            <h4 style="text-align: center;">Contact Me</h4>
+            <form action="mailto:Kacey.Gam@gmail.com">
+                <div class="form-item"><input type="text" placeholder="Name" required></div>
+                <div class="form-item"><input type="email" placeholder="Email" required></div>
+                <div class="form-item"><textarea rows="5" placeholder="Message" required class="input-lg"></textarea></div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </footer>
+    </section>
 </body>
-</html>               
+</html>
