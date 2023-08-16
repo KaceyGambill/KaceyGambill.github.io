@@ -38,7 +38,7 @@ kramdown:
 theme: minima
 
 minima:
-  skin: dark
+  skin: solarized-dark
   social_links:
     - { platform: devto,          user_url: "https://dev.to/klip_klop" }
     - { platform: twitter,        user_url: "https://twitter.com/klip_klop" }
