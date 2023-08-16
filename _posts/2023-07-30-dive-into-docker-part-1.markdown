@@ -118,11 +118,3 @@ docker exec -it golang-webserver sh # exec's into container so that you can expl
 docker system df # check how much space the docker system is using and if there is reclaimable space due to dangling images
 docker system prune --all --force # prune all unused docker images and networks
 ```
-
-
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
