@@ -38,10 +38,15 @@ theme: minima
 
 minima:
   skin: dark
-
+  social_links:
+    - { platform: devto,          user_url: "https://dev.to/klip_klop" }
+    - { platform: twitter,        user_url: "https://twitter.com/klip_klop" }
+    - { platform: github,         user_url: "https://github.com/KaceyGambill" }
+    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/kacey-gambill" }
+show_exerpts: true
 plugins:
   - jekyll-feed
-
+  - jekyll-seo-tag
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
