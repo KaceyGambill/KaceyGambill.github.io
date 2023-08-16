@@ -29,6 +29,10 @@ url: "https://kaceygambill.github.io/" # the base hostname & protocol for your s
 twitter_username: klip_klop
 github_username:  KaceyGambill
 
+markdown: kramdown
+kramdown:
+  input: GFM
+
 # Build settings
 theme: minima
 plugins:
