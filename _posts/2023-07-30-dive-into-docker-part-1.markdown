@@ -75,7 +75,7 @@ Hello, World!# to see logs for the docker container we can use
 docker logs golang-webserver
 2023/07/28 21:33:22 User hit the / route
 2023/07/28 21:33:23 User hit the / route
-{% endhighlight %{
+{% endhighlight %}
 
 Now to quickly cover the flags that were used in the previous commands.
 
