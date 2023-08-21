@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Dive Into Docker part 4: Inspecting Docker Image layers"
-date:   2023-08-21 00:00:00 +0000
+date:   2023-08-12 00:00:00 +0000
 categories: docker
 ---
 This post is going to be shorter. I'd like to highlight a tool that I really 
@@ -201,4 +201,4 @@ I can see a JSON object that includes the sensitive data.
 
 
 If you haven't checked out [Dive](https://github.com/wagoodman/dive), I'd highly
-suggest checking it out and implementing it as a check in your CI/CD pipelines!
+suggest checking it out and implementing it as a check in a CI/CD pipeline!
