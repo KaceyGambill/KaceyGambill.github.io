@@ -6,7 +6,6 @@ categories: docker
 ---
 This post is going to be shorter. I'd like to highlight a tool that I really 
 enjoy working with called "[Dive](https://github.com/wagoodman/dive)" 
-It is an essential tool when working to build and optimize docker containers.
 
 Dive is a an essential tool when building or inspecting Dockerfiles. This tool can help pinpoint exactly what is contained in each layer of the Dockerfile. Specifically it 
 quickly combs through the Dockerfile and tries to show wasted space.
