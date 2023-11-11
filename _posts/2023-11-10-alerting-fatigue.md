@@ -66,7 +66,7 @@ With these alerts, they should only be created when we can link to a dashboard o
 For example, if we alerted on receiving a high rate of errors, I would expect to see a dashboard or runbook indicating that we should look at:
 - what kind of errors are happening and how many erros are there??
 - sum of 500 internal server error
-- sum of 500 not implemented
+- sum of 501 not implemented
 - sum of 502 bad gateway
 - sum of 503 service unavailable
 - sum of 504 gateway timeout's
