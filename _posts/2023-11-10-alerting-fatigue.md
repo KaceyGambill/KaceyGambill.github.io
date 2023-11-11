@@ -25,13 +25,13 @@ This is still going to capture samples that would help indicate if we were to ne
 
 ## The Impacts
 
-Alert fatigue can cause us to overlook or miss the alerts that are actually important. Or the engineer might spend their whole day looking into the alerts, not realizing that they are maybe set to be a bit to sensitive. I have seen this happen numerous times. One engineer will ignore all of them because they are used ot them and in the past most have not been actionable, and the next engineer who is on call will spend their entire shift looking into each alert, when the likely culprit is just normal load.
+Alert fatigue can cause us to overlook or miss the alerts that are actually important. Or the engineer might spend their whole day looking into the alerts, not realizing that they are maybe set to be a bit to sensitive. I have seen this happen numerous times. One engineer will ignore all of them because they are used to them and in the past most have not been actionable, and the next engineer who is on call will spend their entire shift looking into each alert, when the likely culprit is just normal load.
 
 The actionable item at this point is adjusting the alert, or cpu/memory requests and limits.
 
-## Combatting Alert Fatigue
+## Combating Alert Fatigue
 
-The first thing engineers can and should do is try to make the alerts as simple as possible. If there is a noisy alert that is plaguging you today. Ask yourself:
+The first thing engineers can and should do is try to make the alerts as simple as possible. If there is a noisy alert that is plaguing you today. Ask yourself:
 - Why is this alerting?
 - Is this actionable?
   - how do I make this actionable? **this should become the new alert**
@@ -40,11 +40,11 @@ The first thing engineers can and should do is try to make the alerts as simple 
 ## The Challenge of Alarms
 
 Often times teams do not get to set up their alerts from the ground up, but even when they do, it is hard to not alert on everything. To get detailed memory and cpu alerts for a new service, we could load test in a production like environment, but not everyone has the time or infrastructure to set that up.
-To set up these alerts for a service that has been running, hopefully we have historical metrics that we can look at. As these alerts start to happen, we should be frequently revising these alerts until there is very few of them, or they are acitonable when they do happen.
+To set up these alerts for a service that has been running, hopefully we have historical metrics that we can look at. As these alerts start to happen, we should be frequently revising these alerts until there is very few of them, or they are actionable when they do happen.
 
 Another interesting thing we should look at is composite alerts.
 
-If a service has > 85% memory utiliziation, how does this affect the service? Are we noticing latency increases? Has our error rate went up?
+If a service has > 85% memory utilization, how does this affect the service? Are we noticing latency increases? Has our error rate went up?
 These might be factors that would provide really actionable alerts, that are not just barraging the Slack channel.
 
 If we see an increase in: _latency_, _traffic_, _errors_ or _saturation_.
@@ -57,14 +57,14 @@ Setting up composite alerts can be difficult to get right. I prefer to keep aler
 Ideally, I'd like an alert on the [four golden signals](https://sre.google/sre-book/monitoring-distributed-systems/).
 - *latency* time it takes to service a request
 - *traffic* how much demand is being placed on the system (request per second)
-- *errros* rate of requests that fail
+- *errors* rate of requests that fail
   - note, requests that succeed, but show the wrong content would be considered errors, they are just much harder to capture
-- *saturation* measure of utilization of memory, cpu, space available. How much load can the ssytem handle?
+- *saturation* measure of utilization of memory, cpu, space available. How much load can the sytem handle?
 
-With these alerts, they should only be created when we can link to a dashboard or a runbook along with the alert. This is going to save vauluable time for the engineer who is looking into these alerts.
+With these alerts, they should only be created when we can link to a dashboard or a runbook along with the alert. This is going to save valuable time for the engineer who is looking into these alerts.
 
 For example, if we alerted on receiving a high rate of errors, I would expect to see a dashboard or runbook indicating that we should look at:
-- what kind of errors are happening and how many erros are there??
+- what kind of errors are happening and how many errors are there??
 - sum of 500 internal server error
 - sum of 501 not implemented
 - sum of 502 bad gateway
@@ -82,4 +82,5 @@ From here I would like to be able to see at a quick glance answers to the follow
 
 If anyone has any feedback or suggestions, please let me know!
 I would love to have a conversation on how you are handling alerts for your services!
+
 
