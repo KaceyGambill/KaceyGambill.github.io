@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "CI/CD Observability"
-date:   2023-11-22 00:00:00 +0000
+date:   2024-02-21 00:00:00 +0000
 categories: SRE, DevOps, CI/CD, Observability
 ---
 
@@ -49,7 +49,7 @@ From there, if we are logging and graphing the various metrics we need to make t
 
 Having these metrics and this level of observability within the CI/CD pipeline starts to enable the ability to easily roll back changes, notify relevant developers and helps ensure that the applications remain healthy and happy.
 
-Embedding observability into the CI/CD pipeline not only helps understand code deployment, but it also really hightlights deficiencies in our testing frameworks. We can use observability to identify unreliable / flaky tests. Once we have identified the various tests, we can start to see commonalities between failures and then put those metrics into more visual graphs. This will help identify the test and allow us to either fix it or remove it.
+Embedding observability into the CI/CD pipeline not only helps understand code deployment, but it also really highlights deficiencies in our testing frameworks. We can use observability to identify unreliable / flaky tests. Once we have identified the various tests, we can start to see commonalities between failures and then put those metrics into more visual graphs. This will help identify the test and allow us to either fix it or remove it.
 
 Follow up to come on how we are implementing observability inside of GitHub actions!
 
