@@ -1,15 +1,15 @@
 ---
 layout: post
 title:  "Dive Into Docker part 4: Inspecting Docker Image layers"
-date:   2023-08-12 00:00:00 +0000
+date:   2023-08-21 00:00:00 +0000
 categories: docker
 ---
-This post is going to be shorter. I'd like to highlight a tool that I really 
-enjoy working with called "[Dive](https://github.com/wagoodman/dive)" 
+This post is going to be shorter. I'd like to highlight a tool that I really
+enjoy working with called "[Dive](https://github.com/wagoodman/dive)"
 It is an essential tool when working to build and optimize docker containers.
 
-Dive is a an essential tool when building or inspecting Dockerfiles. This tool can help pinpoint exactly what is contained in each layer of the Dockerfile. Specifically it 
-quickly combes through the Dockerfile and tries to show wasted space.
+Dive is a an essential tool when building or inspecting Dockerfiles. This tool can help pinpoint exactly what is contained in each layer of the Dockerfile. Specifically it
+quickly combs through the Dockerfile and tries to show wasted space.
 
 ![dive image wasted space](/img/image-details-1.png)
 
@@ -19,8 +19,8 @@ My preferred way to install Dive, if using a mac, is to use brew: -- `brew insta
 
 ## Using Dive
 I prefer to use dive during local development of Docker containers. To get started
-I typically just run: `dive image-name` if the image is not found locally this 
-will take care of pulling the image from the remote repository. 
+I typically just run: `dive image-name` if the image is not found locally this
+will take care of pulling the image from the remote repository.
 **Note**: tmux keybindings will get in the way, I usually detach from tmux or
 open another terminal session before using `dive`
 
@@ -31,19 +31,19 @@ with "Layers", "Layer Details", "Image Details" and "Current Layer Contents".
 
 Press <Tab> to move between views.
 In each view, it presents us with a few more hotkeys that we can use to further
-inspect this image. 
+inspect this image.
 
 Looking at the "Layers" tab, it presents us with either "layer changes" or
 "aggregated changes" on the right-hand side.
-You can press either <ctrl+l> or <ctrl+a> to switch between these two. 
+You can press either <ctrl+l> or <ctrl+a> to switch between these two.
 
 Before moving to the "Layer Contents" view, I like to pick through the various
 "Layer Details" right below "Layers"
 ![dive ruby:3.2.0, layer details](/img/layer-details-1.png)
-Here it shows the command that was run to generate that layer. 
+Here it shows the command that was run to generate that layer.
 On the right-hand side of the screen we can see "Current Layer Contents", this
 includes the details of the files that were added, removed, permissions on those
-files and how much space these files are taking up. If we <tab> over to that 
+files and how much space these files are taking up. If we <tab> over to that
 view, it presents a few new options:
 - <space> - collapse single dir
 - <ctrl+space> - collapse all dir's
@@ -55,7 +55,7 @@ view, it presents a few new options:
 - <ctrl+p> wrap
 
 I prefer to start out by collapsing all dir's and then start digging into the
-layers that are showing the largest increase in file space. 
+layers that are showing the largest increase in file space.
 
 ![dive ruby:3.2.0, current layer details](/img/current-layer-contents-1.png)
 
@@ -67,7 +67,7 @@ wasted space. Example: `CI=true dive ruby:3.2.0` This also is something that cou
 pipeline to ensure that a ridiculous amount of assets or image space is not
 wasted.
 
-Full output here: 
+Full output here:
 ```bash
 CI=true dive ruby:3.2.0
   Using default CI config
@@ -114,8 +114,8 @@ Results:
   PASS: lowestEfficiency
 Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
 ```
-With this particular image we could go through and remove those files, but in 
-this case it does not take up a significant amount of room, so it is 
+With this particular image we could go through and remove those files, but in
+this case it does not take up a significant amount of room, so it is
 unnecessary.
 [more configuration options](https://github.com/wagoodman/dive#ci-integration)
 
@@ -129,9 +129,9 @@ image layers will expose these secrets.
 If a Dockerfile needs sensitive data, pass it using buildx secrets mounts.
 
 This can be done either with a file, containing the secret value, or an environment
-variable containing the secret. 
+variable containing the secret.
 
-First Create a file, named `build_key` with the value 
+First Create a file, named `build_key` with the value
 `xyz:xyz`
 
 Next add this to the Dockerfile to access the secret.
@@ -156,7 +156,7 @@ docker buildx build --secret id=build_key,env=build_key
 
 This is a rough example, because we would likely never need to add the db
 connection string at build time, but there are a few apps that require a
-build_license when installing packages, or a way to authenticate to a remote 
+build_license when installing packages, or a way to authenticate to a remote
 GitHub  server..
 
 ```Dockerfile
@@ -201,4 +201,4 @@ I can see a JSON object that includes the sensitive data.
 
 
 If you haven't checked out [Dive](https://github.com/wagoodman/dive), I'd highly
-suggest checking it out and implementing it as a check in a CI/CD pipeline!
+suggest checking it out and implementing it as a check in your CI/CD pipelines!
