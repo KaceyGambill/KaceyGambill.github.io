@@ -87,4 +87,4 @@ Three things to note before going through this workflow! 
 
 ### **Conclusion**
 
-The In-place VPA allows us to treat resource requests as fluid, living values rather than static guesses. It’s helping us pack nodes tighter and stop paying for "air" in our clusters.
+The In-place VPA allows us to treat resource requests as fluid, living values rather than static guesses. It’s helping us pack nodes tighter and stop paying for wasted resources in our clusters.
