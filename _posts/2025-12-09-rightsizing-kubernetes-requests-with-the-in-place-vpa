@@ -1,0 +1,84 @@
+
+The Vertical Pod Autoscaler was not production ready. Initially it required restarting pods in order to change resource limits, but with the new `InPlaceOrRecreate` feature, we are now able to right-size our requests dynamically without killing the application.
+Here is how we are using it to cut pod waste and reduce churn.
+
+---
+
+### **The "Over-Provisioning" Tax**
+
+When deploying a new, or even an old service, it's a common pattern to pad the requests to be safe and ensure the service is operating healthily and happily. 
+
+Given this example:
+We are deploying a service to process PDFs in a job queue. We load test this and we estimate that it takes around 250MB's of memory and 250m of CPU. Just in case though, we are going to pad the service and give it 500MB's, and 500m of CPU to ensure nothing goes wrong, now multiply that by 10-500 microservices, and suddenly our cluster is running at 30% utilization while we basically pay to reduce toil.
+Historically, fixing this was a manual nightmare of checking Grafana dashboards and adjusting YAML files.
+
+### **Why We Avoided VPA Before**
+
+We initially avoided the Vertical Pod Autoscaler due to it's destructive updates. 
+
+To change a pod's CPU or Memory requests, VPA had to:
+
+1. Evict the Pod.
+2. Wait for the Scheduler to recreate it with new numbers.
+3. Hope your application handles the graceful shutdown correctly.
+
+For any stateful workloads, or services with larger docker files, this restart tax was painful. 
+Initially we could run the VPA and set the `updateMode: off` and then double check the recommendations, but that becomes a painful and manual process. Especially if our load fluctuates significantly throughout the day. Why pay for 500m of CPU at 2 A.M. if we only actually need it during normal business hours?
+
+### **The Game Changer: In-Place Updates**
+
+Introduced in Kubernetes version 1.33, in beta, the `InPlaceOrRecreate` update mode for the Vertical Pod Autoscaler! 
+Instead of only resizing pods during creation using a web-hook, the `kubelet` can now resize resources allocated to running containers without even restarting it! If the node is full, then it goes ahead and reschedules the pod to a new node with the desired compute / memory available.
+This moves VPA from "scary experimental tool" to "essential cost-saving infrastructure."
+
+### **How We Implemented It**
+
+We shifted our strategy to use the `InPlaceOrRecreate` update mode. Here is the configuration we are rolling out to our stateless workers:
+
+YAML
+
+```
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: backend-service
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: backend
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 100m
+          memory: 100Mi
+        maxAllowed:
+          cpu: 1000m
+          memory: 1000Mi
+        controlledResources: ["cpu", "memory"]
+  updatePolicy:
+    minReplicas: 1
+    updateMode: InPlaceOrRecreate
+```
+
+### **Our Rightsizing Workflow**
+
+We don't just turn this on blindly. Here is the safety workflow we use for existing services:
+
+1. **Audit Mode:** (`updateMode: Off`): We deploy the VPA with updates disabled. We let it run for 1 week to gather metrics on actual usage vs. requests.  
+2. **Review Recommendations**: We check the VPA object status (`kubectl describe vpa <name>`) to see what the engine _would_ do. _Pro-tip: If the recommendation is 50% lower than current requests, we know we are wasting money._  
+3. **Enable In-Place**: Once we trust the baseline, we switch to `InPlaceOrRecreate`.
+4. **Monitor:** We monitor to make sure that we aren’t getting OOMkills and to verify that application metrics are not trending in the wrong direction.
+
+### **Things to Note**
+
+Three things to note before going through this workflow! 
+1. Some runtime’s do not currently support the update mode `InPlaceOrRecreate`, it’s dependent on application code or runtimes to support this.
+2. When Using an HPA and a VPA on the same resource, be careful that you are not increasing your CPU while the HPA is testing the CPU to see whether or not to scale up additional replicas.
+3. Using KEDA to horizontally scale applications based on: **latency, traffic, errors** or **saturation** metrics has essentially solved this for us.
+
+### **Conclusion**
+
+The In-place VPA allows us to treat resource requests as fluid, living values rather than static guesses. It’s helping us pack nodes tighter and stop paying for "air" in our clusters.
