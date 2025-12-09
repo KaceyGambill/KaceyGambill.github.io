@@ -1,3 +1,9 @@
+---
+layout: post
+title: Rightsizing Kubernetes Requests with The In-Place VPA 
+date: 2025-12-09 00:00:00 +0000
+categories: SRE, Kubernetes, Cost, Efficiency
+---
 
 The Vertical Pod Autoscaler was not production ready. Initially it required restarting pods in order to change resource limits, but with the new `InPlaceOrRecreate` feature, we are now able to right-size our requests dynamically without killing the application.
 Here is how we are using it to cut pod waste and reduce churn.
